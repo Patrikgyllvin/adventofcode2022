@@ -3,3 +3,5 @@ bin/
 obj/
 secret/
 .depend
+compile_commands.json
+.cache/
