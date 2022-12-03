@@ -5,9 +5,10 @@
 
 #include <string>
 #include <vector>
+#include <sstream>
 
-unsigned long long partOne( const std::string& input );
-unsigned long long partTwo( const std::string& input );
+unsigned long long partOne( std::istringstream&& input );
+unsigned long long partTwo( std::istringstream&& input );
 
 template< typename T >
 using EnableIf = typename std::enable_if_t< T::value, int >;
@@ -60,3 +61,4 @@ std::vector< T > getNumbers( const std::string &str, const char& delim )
 }
 
 #endif
+

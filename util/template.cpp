@@ -1,25 +1,23 @@
 #include <iostream>
 
-#include <string>
-#include <vector>
-
 #include "lib.hpp"
 
-auto parse( const std::string& input )
+auto parse( std::istringstream& input )
 {
-    return getNumbers< int >( input, ',' );
+    return getNumbers< int >( input.str(), ',' );
 }
 
-unsigned long long partOne( const std::string& input )
+unsigned long long partOne( std::istringstream&& input )
+{
+    parse( input );
+
+    return 0;
+}
+
+unsigned long long partTwo( std::istringstream&& input )
 {
     parse( input );
 
     return 0;
 }
 
-unsigned long long partTwo( const std::string& input )
-{
-    parse( input );
-
-    return 0;
-}

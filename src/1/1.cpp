@@ -1,22 +1,22 @@
 #include <iostream>
 
-#include <string>
-#include <vector>
 #include <numeric>
 
 #include "lib.hpp"
 
-auto parse( const std::string& input )
+auto parse( std::istringstream& input )
 {
 	std::vector< std::vector< int > > chunks;
+	std::string inputStr = input.str();
 
-	for( std::size_t pos = input.find("\n\n"), start = 0; pos != std::string::npos; start = pos + 2, pos = input.find("\n\n", pos + 2) )
-		chunks.push_back(getNumbers< int >( input.substr(start, pos - start), '\n' ) );
+	for( std::size_t pos = inputStr.find("\n\n"), start = 0;
+			pos != std::string::npos; start = pos + 2, pos = inputStr.find("\n\n", pos + 2) )
+		chunks.push_back(getNumbers< int >( inputStr.substr(start, pos - start), '\n' ) );
 
     return chunks;
 }
 
-unsigned long long partOne( const std::string& input )
+unsigned long long partOne( std::istringstream&& input )
 {
 	std::vector< std::vector< int > > chunks = parse( input );
 
@@ -31,12 +31,11 @@ unsigned long long partOne( const std::string& input )
     return max;
 }
 
-unsigned long long partTwo( const std::string& input )
+unsigned long long partTwo( std::istringstream&& input )
 {
 	std::vector< std::vector< int > > chunks = parse( input );
 	std::vector< int > calories;
 
-	int max = 0;
 	for(auto& chunk : chunks)
 		calories.push_back(std::accumulate(chunk.begin(), chunk.end(), 0));
 

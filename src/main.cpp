@@ -18,9 +18,9 @@ int main( int argc, char** argv )
         file.close();
     }
 
-    std::string input = inputStream.str();
-    std::cout << partOne( input ) << '\n';
-    std::cout << partTwo( input ) << '\n';
+    std::cout << partOne( std::istringstream{ inputStream.str() } ) << '\n';
+    std::cout << partTwo( std::istringstream{ inputStream.str() } ) << '\n';
 
     return 0;
 }
+

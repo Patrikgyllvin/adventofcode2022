@@ -1,5 +1,4 @@
 #include <iostream>
-#include <sstream>
 
 #include "lib.hpp"
 
@@ -18,25 +17,23 @@ int moveGrid[3][3] =
 };
 
 
-unsigned long long partOne( const std::string& input )
+unsigned long long partOne( std::istringstream&& input )
 {
-	std::istringstream stream{ input };
 	std::string line;
 
 	int score = 0;
-	while(std::getline(stream, line, '\n'))
+	while(std::getline(input, line, '\n'))
 		score += scoreGrid[line[0] - 'A'][line[2] - 'X'];
 
     return score;
 }
 
-unsigned long long partTwo( const std::string& input )
+unsigned long long partTwo( std::istringstream&& input )
 {
-	std::istringstream stream{ input };
 	std::string line;
 
 	int score = 0;
-	while(std::getline(stream, line, '\n'))
+	while(std::getline(input, line, '\n'))
 		score += scoreGrid[line[0] - 'A'][moveGrid[line[0] - 'A'][line[2] - 'X']];
 
     return score;
